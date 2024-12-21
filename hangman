@@ -1,1 +1,68 @@
+#include<stdio.h>
+#include<string.h>
+char word[10];
+int chances=10;
+int n;
+void words()
+{
+    printf("enter the word\n");
+    gets(word);
+    n = stringLen(word);
+   /* for(int i=0;i<10;i++)
+    {
+        printf("%c",word[i]);
+    }
+    printf("\n");
+    printf("%d\n",n);*/
+}
 
+int stringLen(char *str) {
+    int length = 0;
+    while (*str != '\0') {
+        length++;
+        str++;
+    }
+    return length;
+}
+void check()
+{
+    char l;
+    int correct=0;
+    while(chances!=0)
+    {
+        int count=0;
+        if(correct!=n)
+        {
+            printf("enter letter\n");
+            scanf(" %c",&l);
+            for(int i=0;i<n;i++)
+            {
+                    if(l==word[i])
+                    {
+                        printf("letter is at position %d\n",i);
+                        count++;
+                        correct++;
+                    }
+                    
+            }
+           // printf("%d counts %d corrects\n",count,correct);
+        if(count==0)
+        {
+            chances--;
+            printf("letter not in word :D\n you have %d chances\n",chances);
+        }
+        }
+        else
+        {
+            break;
+        }
+     }
+    
+}
+
+ int main()
+ {
+     words();
+    check();
+    return 0;
+ }
